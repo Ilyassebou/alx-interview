@@ -3,8 +3,11 @@
 
 
 def pascal_triangle(n):
-    """returns a list of lists of numbers
-    representing the pascal triangle"""
+    """
+    a function that returns a list
+    of integers representing the
+    pascal triangle of n
+    """
     tri = []
 
     if n <= 0:
@@ -20,7 +23,7 @@ def pascal_triangle(n):
                     row.append(1)
                 else:
                     row.append(tri[i - 1][j - 1] +
-                                   tri[i - 1][j])
+                                tri[i - 1][j])
 
             tri.append(row)
 
