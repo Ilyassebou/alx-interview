@@ -1,12 +1,20 @@
 #!/usr/bin/python3
-"""Minimum Operations"""
 
-def minOperations(n):
-    nOpe = 0
-    minOpe = 2
-    while n > 1:
-        while n % minOpe == 0:
-            nOpe += minOpe
-            n /= minOpe
-        minOpe += 1
-    return nOpe
+"""
+    Calculates minimum operations to reach n H characters.
+"""
+
+def minOperations(num_chars):
+    """ Returns fewest operations to get num_chars H characters. """
+    operation_count = 0
+    divisor = 2
+
+    if num_chars <= 1:
+        return 0
+    while num_chars != 1:
+        if num_chars % divisor == 0:
+            num_chars //= divisor
+            operation_count += divisor
+        else:
+            divisor += 1
+    return operation_count
