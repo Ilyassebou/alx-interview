@@ -1,20 +1,19 @@
 #!/usr/bin/python3
-
 """
-    Calculates minimum operations to reach n H characters.
-"""
+Module containing method that calculates fewest no. of
+operations needed to result in exactly n H chars"""
 
-def minOperations(num_chars):
-    """ Returns fewest operations to get num_chars H characters. """
-    operation_count = 0
+
+def minOperations(n):
+    """Function that calculates fewest no. of ops needed for n H chars"""
+
+    operations_needed = 0
     divisor = 2
 
-    if num_chars <= 1:
-        return 0
-    while num_chars != 1:
-        if num_chars % divisor == 0:
-            num_chars //= divisor
-            operation_count += divisor
-        else:
-            divisor += 1
-    return operation_count
+    while n > 1:
+        while n % divisor == 0:
+            operations_needed += divisor
+            n /= divisor
+        divisor += 1
+
+    return operations_needed
