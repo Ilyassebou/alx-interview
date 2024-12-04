@@ -1,19 +1,23 @@
 #!/usr/bin/python3
-"""Module for Island Perimeter"""
+"""Module for island perimeter"""
+
 
 def island_perimeter(grid):
-    """Return the perimiter of an island"""
-    width = len(grid[0])
-    height = len(grid)
-    edges = 0
-    size = 0
+    """
+    Calculates the perimeter of the island in the grid
+    """
+    if not all(len(row) == len(grid[0]) for row in grid):
+        raise ValueError("Grid is not rectangular")
 
-    for i in range(height):
-        for j in range(width):
+    perimeter = 0
+
+    for i in range(len(grid)):
+        for j in range(len(grid[0])):
             if grid[i][j] == 1:
-                size += 1
-                if (j > 0 and grid[i][j - 1] == 1):
-                    edges += 1
-                if (i > 0 and grid[i - 1][j] == 1):
-                    edges += 1
-    return size * 4 - edges * 2
+                perimeter += 4
+                if i > 0 and grid[i - 1][j] == 1:
+                    perimeter -= 2
+                if j > 0 and grid[i][j - 1] == 1:
+                    perimeter -= 2
+
+    return perimeter
